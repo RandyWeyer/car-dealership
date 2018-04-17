@@ -8,6 +8,7 @@ namespace CarDealership.Models
     private string _model;
     private string _year;
     private string _price;
+    private int _id;
 
     public CarVariables(string make, string model, string year, string price)
       {
@@ -15,7 +16,7 @@ namespace CarDealership.Models
         _model = model;
         _year = year;
         _price = price;
-
+        _id = _instances.Count;
       }
     public static List<CarVariables> _instances = new List<CarVariables> {};
 
@@ -58,7 +59,10 @@ namespace CarDealership.Models
     {
       _price = newPrice;
     }
-
+    public int GetId()
+    {
+      return _id;
+    }
     public static List<CarVariables> GetAll()
     {
       return _instances;

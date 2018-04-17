@@ -8,22 +8,27 @@
   <body>
     <h1>Welcome to the Dealership</h1>
 
-    <table>
-      <thead>
-        <th>Make</th>
-        <th>Model</th>
-        <th>Year</th>
-        <th>Price</th>
-      </thead>
-      @foreach(var car in Model)
-        {
-          <tr>
-            <td>@car.GetMake()</td>
-            <td>@car.GetModel()</td>
-            <td>@car.GetYear()</td>
-            <td>@car.GetPrice()</td>
-          </tr>
-        }
-    </table>
+      <table>
+        <thead>
+          <th>Make</th>
+          <th>Model</th>
+          <th>Year</th>
+          <th>Price</th>
+          <th>Actions</th>
+        </thead>
+          @foreach(var car in Model)
+            {
+              <tr>
+                <td>@car.GetMake()</td>
+                <td>@car.GetModel()</td>
+                <td>@car.GetYear()</td>
+                <td>$@car.GetPrice()</td>
+                <td>
+                  @Html.ActionLink("Delete", "Delete", new { id=@car.GetId() })
+                </td>
+              </tr>
+
+            }
+      </table>
   </body>
 </html>

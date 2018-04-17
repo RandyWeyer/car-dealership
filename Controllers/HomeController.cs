@@ -50,12 +50,14 @@ namespace CarDealership.Controllers
       //   return View("Inventory", newCar);
       // }
 
-      // [Route("/inventory/delete")]
-      // public ActionResult Delete()
-      // {
-      //   this.Remove();
-      //   return View("Inventory");
-      // }
+      [HttpGet("/delete")]
+      public ActionResult Delete()
+      {
+        List<CarVariables> allItems = CarVariables.GetAll();
+        int carId = int.Parse((Request.Query["id"]));
+        allItems.RemoveAt(carId);
+        return View("Inventory", allItems);
+      }
 
     }
 
